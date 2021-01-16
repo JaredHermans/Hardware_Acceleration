@@ -74,33 +74,33 @@ begin
                 r_Read_Index    <= 0;
             else
                 
-					 -- Take care of initial case:
-					 if i_Write_EN = '1' and i_Read_EN = '1' then
-						  if r_FIFO_Count = c_Initial then
-							   r_FIFO_Count <= 1;
-						  end if;
-					 end if;
+	        -- Take care of initial case:
+	    	if i_Write_EN = '1' and i_Read_EN = '1' then
+		    if r_FIFO_Count = c_Initial then
+			r_FIFO_Count <= 1;
+		    end if;
+		end if;
 					 
                 -- Keep track of the total number of words in the FIFO
                 if i_Write_EN = '1' and i_Read_EN = '0' then
                     r_FIFO_Count <= r_FIFO_Count + 1;
                 elsif i_Write_EN = '0' and i_Read_EN = '1' then
                     if r_FIFO_Count = 0 then
-							  r_FIFO_Count <= 0;
-						  else
-							  r_FIFO_Count <= r_FIFO_Count - 1;
-						  end if;
+			r_FIFO_Count <= 0;
+		    else
+			r_FIFO_Count <= r_FIFO_Count - 1;
+		    end if;
                 end if;
 
                 -- Keep track of the write index and controls roll-over
                 if i_Write_EN = '1' and w_Full = '0' then
-						  if r_Write_Index /= c_DEPTH - 1 then
-							  if r_Write_Index = c_DEPTH then
-									r_Write_Index <= 1;
-							  else
-									r_Write_Index <= r_Write_Index + 1;
-							  end if;
-						  end if;
+		    if r_Write_Index /= c_DEPTH - 1 then
+			if r_Write_Index = c_DEPTH then
+			    r_Write_Index <= 1;
+			else
+			    r_Write_Index <= r_Write_Index + 1;
+			end if;
+		    end if;
                 end if;
 
                 -- Keep track of the read index and controls roll-over
