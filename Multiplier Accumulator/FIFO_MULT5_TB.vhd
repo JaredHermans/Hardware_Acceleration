@@ -9,38 +9,38 @@ end entity FIFO_MULT5_TB;
 
 architecture BEHAVE of FIFO_MULT5_TB is
 
-	constant c_Clk_HPS 	: time := 10 ns;
-	constant c_Clk_FPGA 	: time := 20 ns;
+	constant c_Clk_HPS 		: time := 10 ns;
+	constant c_Clk_FPGA 		: time := 20 ns;
 
 	signal r_Dataa_0 		: std_logic_vector(63 downto 0) := (others => '0');
 	signal r_Datab_0 		: std_logic_vector(63 downto 0) := (others => '0');
-	signal r_Write_EN 	: std_logic := '0';
+	signal r_Write_EN 		: std_logic := '0';
 	signal r_Clk_HPS 		: std_logic := '1';
-	signal r_Clk_FPGA 	: std_logic := '1';
+	signal r_Clk_FPGA 		: std_logic := '1';
 	signal r_aclr 			: std_logic := '0';
 	signal w_Full 			: std_logic;
 	signal w_Result 		: std_logic_vector(47 downto 0);
-	signal w_Result_x 	: std_logic_vector(47 downto 0);
-	signal w_Result_y 	: std_logic_vector(47 downto 0);
+	signal w_Result_x 		: std_logic_vector(47 downto 0);
+	signal w_Result_y 		: std_logic_vector(47 downto 0);
 	
-	file file_VECTORS : text;
-	file file_RESULTS : text;
+	file file_VECTORS 		: text;
+	file file_RESULTS 		: text;
 	
 	component FIFO_MULT5 is
 		port(
-			i_Clk_HPS 		: in  std_logic;
-			i_Clk_FPGA 		: in  std_logic;
+			i_Clk_HPS 	: in  std_logic;
+			i_Clk_FPGA 	: in  std_logic;
 			
-			i_Dataa_0 		: in  std_logic_vector(63 downto 0);
-			i_Datab_0 		: in  std_logic_vector(63 downto 0);
+			i_Dataa_0 	: in  std_logic_vector(63 downto 0);
+			i_Datab_0 	: in  std_logic_vector(63 downto 0);
 		
-			i_Write_EN 		: in  std_logic;
-			i_aclr 			: in  std_logic;
+			i_Write_EN 	: in  std_logic;
+			i_aclr 		: in  std_logic;
 			
-			o_Full	 		: out std_logic;
-			o_Result 		: out std_logic_vector(47 downto 0);
-			o_Result_x 		: out std_logic_vector(47 downto 0);
-			o_Result_y 		: out std_logic_vector(47 downto 0)
+			o_Full	 	: out std_logic;
+			o_Result 	: out std_logic_vector(47 downto 0);
+			o_Result_x 	: out std_logic_vector(47 downto 0);
+			o_Result_y 	: out std_logic_vector(47 downto 0)
 		);
 	end component FIFO_MULT5;
 	
@@ -48,18 +48,18 @@ begin
 
 	FIFO_MULT5_Inst : FIFO_MULT5
 		port map(
-			i_Clk_HPS 		=> r_Clk_HPS,
-			i_Clk_FPGA 		=> r_Clk_FPGA,
-			i_Dataa_0 		=> r_Dataa_0,
-			i_Datab_0 		=> r_Datab_0,
+			i_Clk_HPS 	=> r_Clk_HPS,
+			i_Clk_FPGA 	=> r_Clk_FPGA,
+			i_Dataa_0 	=> r_Dataa_0,
+			i_Datab_0 	=> r_Datab_0,
 		
-			i_Write_EN 		=> r_Write_EN,
-			i_aclr 			=> r_aclr,
+			i_Write_EN 	=> r_Write_EN,
+			i_aclr 		=> r_aclr,
 			
-			o_Full 			=> w_Full,
-			o_Result 		=> w_Result,
-			o_Result_x 		=> w_Result_x,
-			o_Result_y 		=> w_Result_y
+			o_Full 		=> w_Full,
+			o_Result 	=> w_Result,
+			o_Result_x 	=> w_Result_x,
+			o_Result_y 	=> w_Result_y
 		);
 		
 	r_Clk_HPS <= not r_Clk_HPS after c_Clk_HPS / 2;
@@ -67,14 +67,14 @@ begin
 	
 	process is 
 	
-		variable v_OutLine 	: line;
+		variable v_OutLine 		: line;
 			variable v_InLine 	: line;
 			variable v_Dataa_0 	: std_logic_vector(63 downto 0);
 			variable v_Datab_0 	: std_logic_vector(63 downto 0);
-			variable v_Space 		: character;
+			variable v_Space 	: character;
 			
-			variable v_Count 		: integer range 0 to 200 := 0;
-			variable v_I 			: integer range 0 to 200 := 0;
+			variable v_Count 	: integer range 0 to 200 := 0;
+			variable v_I 		: integer range 0 to 200 := 0;
 	
 	begin
 	
