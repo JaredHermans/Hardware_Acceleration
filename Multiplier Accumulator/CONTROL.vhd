@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity CONTROL is
 	port(
 		i_Clk 			: in  std_logic;
-		i_Empty 			: in  std_logic;
+		i_Empty 		: in  std_logic;
 		o_ena0 			: out std_logic;
 		o_Read_EN 		: out std_logic
 	);
@@ -32,11 +32,11 @@ begin
 		end if;
 	end process;
 	
-	w_ena0 <= r_ena0;
-	o_ena0 <= w_ena0;
+	w_ena0 		<= r_ena0;
+	o_ena0 		<= w_ena0;
 	
-	w_Read_EN <= '1' when i_Empty = '0' else '0';
+	w_Read_EN 	<= '1' when i_Empty = '0' else '0';
 	
-	o_Read_EN <= w_Read_EN;
+	o_Read_EN 	<= w_Read_EN;
 	
 end architecture RTL;
