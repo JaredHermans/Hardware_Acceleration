@@ -5,3 +5,5 @@ The module also instantiates **CONTROL.vhd** which controls the enable to the mu
 
 **FIFO_MULT5_TB.vhd** is the testbench for FIFO_MULT5.vhd. The testbench provides input to the module from an input txt file containing 2 columns of 64 bit numbers and 
 creates an output txt file containing the results of the multiplier accumulator for x[n]*y[n].
+
+**CONTROL.vhd** is a module that controls the read enable to the buffers and the enable for the multiplier accumulators.
