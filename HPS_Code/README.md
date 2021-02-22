@@ -11,3 +11,5 @@ perform an action. The following explains how to create a custom hello world U-B
       Add line #define CONFIG_CMD_HELLO
       
 Go to <quartus_project_dir>/software/spl_bsp and run "make clean" followed by "make uboot"
+
+**cmd_algorithm.c** C code for custom U-Boot command which reads data from AXI master and finishes the calculation of the normalized correlation algorithm.
