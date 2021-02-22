@@ -1,4 +1,5 @@
-// Custom U-Boot Command
+// Custom U-Boot Command -- work in progress
+
 #include <common.h>
 #include <command.h>
 #include "../../../../qsys_headers/hps_0.h"
