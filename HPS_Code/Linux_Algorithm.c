@@ -185,11 +185,10 @@ int main(void)
 		*UART = 0x0D; // Horizontal Tab
 
 		*aclr = 0;
+		
+		close(fd);
 		return(0);
 	}
-
-	close(fd);
-	return(0);
 }
 
 // 68cdb77922a4f2a8c = 120830302097125616268
