@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h> // Provides the mmap and munmap functions
 #include <math.h>
