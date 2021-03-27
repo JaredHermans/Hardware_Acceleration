@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/mman.h> // Provides the mmap and munmap functions
-#include <math.h>
 #include <unistd.h>
+//#include <sys/time.h>
 
 #define FPGA_AXI_BASE  	 0xC0000000
 #define HW_REGS_SPAN     0x00200000
@@ -20,6 +20,8 @@
 #define FULL_TIME_BASE   0xA0
 #define UART_BASE        0xb0
 
+//struct timeval t1, t2;
+
 typedef struct {
 	__uint64_t lo;
 	__uint64_t hi;
@@ -28,17 +30,19 @@ typedef struct {
 // Main AXI Bus:
 void *virtual_base;
 
-volatile __uint8_t *aclr = NULL;
-volatile __uint8_t *HPS_Done = NULL;
-volatile __uint32_t *xy_Dataa = NULL;
-volatile __uint32_t *xy_Datab = NULL;
-volatile __uint32_t *xx_Dataa = NULL;
-volatile __uint32_t *xx_Datab = NULL;
-volatile __uint32_t *yy_Dataa = NULL;
-volatile __uint32_t *yy_Datab = NULL;
-volatile __uint32_t *FPGA_Time = NULL;
-volatile __uint32_t *FULL_Time = NULL;
-volatile __uint8_t *UART = NULL;
+// Memmory Mapped Peripherials
+__uint8_t  *aclr      = NULL;
+__uint8_t  *HPS_Done  = NULL; 		// Output
+__uint32_t *xy_Dataa  = NULL;
+__uint32_t *xy_Datab  = NULL;
+__uint32_t *xx_Dataa  = NULL;
+__uint32_t *xx_Datab  = NULL;
+__uint32_t *yy_Dataa  = NULL;
+__uint32_t *yy_Datab  = NULL;
+__uint32_t *FPGA_Time = NULL;
+__uint32_t *FULL_Time = NULL;
+__uint8_t  *UART      = NULL;		// Output
+__uint8_t  *FPGA_Done = NULL;
 
 __uint64_t LSB(__uint64_t input)
 {
@@ -70,7 +74,7 @@ void MULT(__uint64_t x, __uint64_t y, __uint64_t* res1, __uint64_t* res2)
     *res2 = xHigh_yHigh + ((MSB(xHigh_yLow + xLow_yHigh)) >> 32);
 }
 
-__uint32_t sqrt_64(__uint64_t input)
+__uint32_t sqrt_64(__uint64_t input)  // Faster square root algorithm than math.h sqrt
 {
 	__uint32_t root = 0;
 	__uint32_t Bit;
@@ -84,14 +88,38 @@ __uint32_t sqrt_64(__uint64_t input)
 	return root;
 }
 
+int intToAscii(int number)
+{
+    return '0' + number;
+}
+
+void Bluetooth(__uint32_t N, __uint8_t size)
+{
+    __uint32_t r;
+    __uint32_t Print = 0;
+
+    Print &= ~0xFFFFFFFFu;
+    if (N == 0 && size == 0)
+        return;
+    // Extract last digit
+    r = N % 10;
+    // Recursive call to next iteration
+    Bluetooth(N / 10, size - 1);
+
+    Print |= intToAscii(r);
+	*UART = Print;
+	size -= 1;
+}
+
 int main(void)
 {
-	//FILE *out;
 	int fd;
-	__uint32_t mult_time, sq_time, sq2_time, sq_lo2, sq_hi2;
-	__uint64_t xx_Data, xy_Data, yy_Data;
-	uint128_t MULT_res;
-	long double sq_lo, sq_hi;
+	__uint32_t sq_lo, sq_hi; 					// Square root of lower and upper 64 bits of 128 bit number
+	__uint32_t Time; 							// Time to complete algorithm in Clock Cycles
+	__uint64_t xx_Data, xy_Data, yy_Data, res;
+	uint128_t MULT_res;		
+	double Final_corr, Bluetooth_Time;			// Final correlation Value and Time in seconds
+	//double elapsedTime;
 
 	// Open /dev/mem
 	if( (fd = open( "/dev/mem", (O_RDWR | O_SYNC ) ) ) == -1 )
@@ -123,71 +151,62 @@ int main(void)
 	UART 	 = (__uint8_t *)(virtual_base + UART_BASE); 		// Output
 	HPS_Done = (__uint8_t *)(virtual_base + DONE_BASE); 		// Output
 
-	while(1)
-	{
-		// Reset board:
-		printf("Resetting FPGA:\n");
-		*(aclr) = 1;					// Timer in FPGA starts
+	// Reset board:
+	printf("\nResetting FPGA:\n\n");
 
-		xy_Data = *xy_Dataa | (((__uint64_t) *xy_Datab) << 32);
-		xx_Data = *xx_Dataa | (((__uint64_t) *xx_Datab) << 32);
-		yy_Data = *yy_Dataa | (((__uint64_t) *yy_Datab) << 32);
+	//gettimeofday(&t1, NULL);
 
-		MULT(xx_Data, yy_Data, &MULT_res.lo, &MULT_res.hi);
+	*(aclr) = 1;											// Timer in FPGA starts and board reset
 
-		*HPS_Done = 1;					// Timer in FPGA stops
-		mult_time = *FULL_Time;
-		*HPS_Done = 0; 					// Resume Timer
+	xy_Data = *xy_Dataa | (((__uint64_t) *xy_Datab) << 32);
+	xx_Data = *xx_Dataa | (((__uint64_t) *xx_Datab) << 32);
+	yy_Data = *yy_Dataa | (((__uint64_t) *yy_Datab) << 32);
 
-		sq_lo = sqrt(MULT_res.lo);
-		sq_hi = sqrt(MULT_res.hi);
+	MULT(xx_Data, yy_Data, &MULT_res.lo, &MULT_res.hi);		// Ans of xx_Data * yy_Data stored in 2 64-bit integers 
 
-		*HPS_Done = 1; 					// Stop Timer
-		sq_time = *FULL_Time;
-		*HPS_Done = 0;
+	sq_lo = sqrt_64(MULT_res.lo);							// Lower 64-bits of 128 bit square root
+	sq_hi = sqrt_64(MULT_res.hi);							// Upper 64-bits of 128 bit square root
 
-		sq_lo2 = sqrt_64(MULT_res.lo);
-		sq_hi2 = sqrt_64(MULT_res.hi);
+	res = (((__uint64_t) sq_hi) << 32) | (sq_lo);			// 128-bit square root answer
+	Final_corr = (double) xy_Data / res;					// Final Correlation Value
 
-		*HPS_Done = 1;
-		sq2_time = *FULL_Time;
-		
-		printf("xy_Data = %.16llX\n", xy_Data);
-		printf("xx_Data = %.16llX\n", xx_Data);
-		printf("yy_Data = %.16llX\n\n", yy_Data);
+	*HPS_Done = 1; 											// Stop FPGA Timer
+	Time = *FULL_Time; 										// Read number of clock cycles that have passed from FPGA
+	//gettimeofday(&t2, NULL);
+	//elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000000.0;
+	//elapsedTime += (t2.tv_usec - t1.tv_usec);
 
-		printf("%.16llX * %.16llX = %.16llX%.16llX\n\n", xx_Data, yy_Data, MULT_res.hi, MULT_res.lo);
+	printf("xy_Data = %.16llX\n", xy_Data);
+	printf("xx_Data = %.16llX\n", xx_Data);
+	printf("yy_Data = %.16llX\n\n", yy_Data);
+
+	printf("%.16llX * %.16llX = %.16llX%.16llX\n\n", xx_Data, yy_Data, MULT_res.hi, MULT_res.lo);
 	
-		printf("Square root of %.16llX = %.8lA\n", MULT_res.hi, sq_hi);
-		printf("Square root of %.16llX = %.8lA\n\n", MULT_res.lo, sq_lo);
+	printf("Upper 64-bits square root %.16llX = %.8lX\n", MULT_res.hi, sq_hi);
+	printf("Lower 64-bits square root %.16llX = %.8lX\n", MULT_res.lo, sq_lo);
 
-		printf("Square root of %.16llX = %.8lX\n", MULT_res.hi, sq_hi2);
-		printf("Square root of %.16llX = %.8lX\n\n", MULT_res.lo, sq_lo2);
+	printf("\nFinal Correlation Value: %f\n", Final_corr);
+	printf("Correct Correlation Value: 0.778302\n\n");
 
-		printf("FPGA_Time = %d Clock Cycles\n", *FPGA_Time);
-		printf("Multiplication Time = %d Clock Cycles\n", mult_time);
-		printf("Square Root Time = %d\n", sq_time);
-		printf("Square Root 2 Time = %d\n\n", sq2_time);
+	Bluetooth_Time = (double) Time / 50000000;
 
-		printf("Testing Bluetooth:\n\n");
-		// Test values
-		*UART = 0x30; // 0
-		*UART = 0x2E; // .
-		*UART = 0x39; // 9
-		*UART = 0x34; // 4
-		*UART = 0x2C; // ,
-		*UART = 0x30; // 0
-		*UART = 0x2E; // .
-		*UART = 0x31; // 1
-		*UART = 0x33; // 3
-		*UART = 0x0A; // Line Feed
-		*UART = 0x0D; // Horizontal Tab
+	printf("Total time for calculation: %d Clock Cycles = %f seconds\n", Time, Bluetooth_Time);
+	//printf("Total time for calculation gettimeofday: %f usec\n\n", elapsedTime);
 
-		*aclr = 0;
-		
-		close(fd);
-		return(0);
-	}
+	printf("Testing Bluetooth:\n\n");
+	// Test values
+	*UART = 0x30; 											// 0
+	*UART = 0x2E; 											// .
+	Bluetooth((__uint32_t) (Final_corr * 1e9), 9);
+	*UART = 0x2C; 											// ,
+	*UART = 0x30; 											// 0
+	*UART = 0x2E; 											// .
+	Bluetooth((__uint32_t) (Bluetooth_Time * 1e9), 9);
+	*UART = 0x0A; 											// Line Feed
+	*UART = 0x0D; 											// Carriage Return
+
+	*aclr = 0;												// Reset board
+	close(fd);
+	return(0);
+	
 }
-
-// 68cdb77922a4f2a8c = 120830302097125616268
