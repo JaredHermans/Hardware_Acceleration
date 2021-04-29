@@ -8,37 +8,37 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB
+Z0 d/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component_32_Bit/TB
 Eddr3_read_top
-Z1 w1616721607
+Z1 w1618518162
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
 R0
-Z4 8/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/DDR3_Read_Top.vhd
-Z5 F/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/DDR3_Read_Top.vhd
+Z4 8../Source/DDR3_Read_Top.vhd
+Z5 F../Source/DDR3_Read_Top.vhd
 l0
-L4 1
-VbKoP^gFI:1ba6E`5kN?jk1
-!s100 10PiSeiARUI5NJk9nA<U23
+L18 1
+Vj2b693jU7G5YA9Q0=FI3R1
+!s100 Nj6j<PDkGA?;eS;SD2QP53
 Z6 OV;C;2020.1;71
 32
-Z7 !s110 1616798362
+Z7 !s110 1618848320
 !i10b 1
-Z8 !s108 1616798362.000000
-Z9 !s90 -reportprogress|300|/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/DDR3_Read_Top.vhd|
-Z10 !s107 /tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/DDR3_Read_Top.vhd|
+Z8 !s108 1618848320.000000
+Z9 !s90 -reportprogress|300|../Source/DDR3_Read_Top.vhd|
+Z10 !s107 ../Source/DDR3_Read_Top.vhd|
 !i113 1
 Z11 tExplicit 1 CvgOpt 0
 Artl
 R2
 R3
-Z12 DEx4 work 13 ddr3_read_top 0 22 bKoP^gFI:1ba6E`5kN?jk1
+Z12 DEx4 work 13 ddr3_read_top 0 22 j2b693jU7G5YA9Q0=FI3R1
 !i122 0
-l92
-L39 101
-V1J4TXgD23QfPNDE8[@ZzW1
-!s100 IG^9A>Wb3:Uzi[G]BC0ZO0
+l110
+L55 108
+V]DeH]3^aoK=B;7C9Nn5h50
+!s100 j7<EnRDzEKD7OENFQL=LX0
 R6
 32
 R7
@@ -48,56 +48,60 @@ R9
 R10
 !i113 1
 R11
-Eddr_tb
-Z13 w1616798357
+Eddr_tb2
+Z13 w1618802177
+Z14 DPx4 ieee 20 numeric_std_unsigned 0 22 L9z`>=>LNY9h8oAIomUKm3
+Z15 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R2
 R3
 !i122 3
 R0
-Z14 8/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB_VHDL/DDR_TB.vhd
-Z15 F/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB_VHDL/DDR_TB.vhd
+Z16 8../TB_VHDL/DDR_TB2.vhd
+Z17 F../TB_VHDL/DDR_TB2.vhd
 l0
-L4 1
-V@YSI;DkEkacce^iO<R>ci2
-!s100 BmmN4k5QabLl[cKUF`:7H1
+L17 1
+VMahE6z688dEKhD4WnD8Wk3
+!s100 ?l8[iL:z[_EH;k;W7=3NK0
 R6
 31
 R7
 !i10b 1
 R8
-Z16 !s90 -reportprogress|300|-93|-work|work|/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB_VHDL/DDR_TB.vhd|
-!s107 /tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB_VHDL/DDR_TB.vhd|
+Z18 !s90 -reportprogress|300|-93|-work|work|../TB_VHDL/DDR_TB2.vhd|
+!s107 ../TB_VHDL/DDR_TB2.vhd|
 !i113 1
-Z17 o-93 -work work
+Z19 o-93 -work work
 R11
 Abehave
 R12
+R14
+R15
 R2
 R3
-DEx4 work 6 ddr_tb 0 22 @YSI;DkEkacce^iO<R>ci2
+DEx4 work 7 ddr_tb2 0 22 MahE6z688dEKhD4WnD8Wk3
 !i122 3
-l100
-L7 153
-Vmczd?0RU4XNHCX6T287cD0
-!s100 =zaco>?<^e^CIROEeLC?g2
+l118
+L20 196
+VDXY4B5MfcfIehCdC;E]dM2
+!s100 RXzf:YF_R^c:nb4MVbzhf2
 R6
 31
 R7
 !i10b 1
 R8
-R16
-Z18 !s107 /tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/TB_VHDL/DDR_TB.vhd|
+R18
+Z20 !s107 ../TB_VHDL/DDR_TB2.vhd|
 !i113 1
-R17
+R19
 R11
 Efifo_ip
-Z19 w1616271765
+Z21 w1616271765
 R2
 R3
 !i122 1
 R0
-Z20 8/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/FIFO_IP.vhd
-Z21 F/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/FIFO_IP.vhd
+Z22 8../Source/FIFO_IP.vhd
+Z23 F../Source/FIFO_IP.vhd
 l0
 L43 1
 VPeh@k7=:5N7DffIEU]RY=0
@@ -107,10 +111,10 @@ R6
 R7
 !i10b 1
 R8
-Z22 !s90 -reportprogress|300|-93|-work|work|/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/FIFO_IP.vhd|
-Z23 !s107 /tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/FIFO_IP.vhd|
+Z24 !s90 -reportprogress|300|-93|-work|work|../Source/FIFO_IP.vhd|
+Z25 !s107 ../Source/FIFO_IP.vhd|
 !i113 1
-R17
+R19
 R11
 Asyn
 R2
@@ -126,55 +130,55 @@ R6
 R7
 !i10b 1
 R8
-R22
-R23
+R24
+R25
 !i113 1
-R17
+R19
 R11
 Esdram_ctrl
-Z24 w1616797435
-Z25 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z26 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z27 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z26 w1618848310
+Z27 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z28 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R15
 R2
 R3
 !i122 2
 R0
-Z28 8/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/SDRAM_CTRL.vhd
-Z29 F/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/SDRAM_CTRL.vhd
+Z29 8../Source/SDRAM_CTRL.vhd
+Z30 F../Source/SDRAM_CTRL.vhd
 l0
-L6 1
-V7l`aH:afc4jJ[`JYSOZGM1
-!s100 =[63FHRG3BzZ?0;MMLFF61
+L9 1
+V8PMoUk6W=0CPA39WcSHCb2
+!s100 gdi<oL0]2M;B@E0X3PnDM2
 R6
 31
 R7
 !i10b 1
 R8
-Z30 !s90 -reportprogress|300|-93|-work|work|/tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/SDRAM_CTRL.vhd|
-Z31 !s107 /tools/intelFPGA_lite/20.1/ip/Custom_IP/Custom_DDR_Component/Source/SDRAM_CTRL.vhd|
+Z31 !s90 -reportprogress|300|-93|-work|work|../Source/SDRAM_CTRL.vhd|
+Z32 !s107 ../Source/SDRAM_CTRL.vhd|
 !i113 1
-R17
+R19
 R11
 Artl
-R25
-R26
 R27
+R28
+R15
 R2
 R3
-DEx4 work 10 sdram_ctrl 0 22 7l`aH:afc4jJ[`JYSOZGM1
+DEx4 work 10 sdram_ctrl 0 22 8PMoUk6W=0CPA39WcSHCb2
 !i122 2
-l58
-L38 140
-Vjj1=eGd:?7D>;cA5cJl;a1
-!s100 SmVHzGEimc6LA2;g3gIb?0
+l66
+L44 204
+VC5[Xl`BD=WX6T@7=UUgY01
+!s100 LUmF[AUoL9^O[YJZ`<U;63
 R6
 31
 R7
 !i10b 1
 R8
-R30
 R31
+R32
 !i113 1
-R17
+R19
 R11
