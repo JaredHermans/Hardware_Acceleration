@@ -6,7 +6,3 @@ source.sh: 		Script which copies socfpga.c to U-Boot files for custom U-Boot com
 warning.sh: 		Script which copies U-Boot and preloader executables on A2 partition of SD card. Check lsblk before executing.
 
 gen_u-boot_script.sh:  	Generates u-boot.scr from u-boot.txt
-
-
-
-Protected Ram:		Add line #define CONFIG_PRAM=65536 in u-boot-socfpga/include/configs/socfpga-cyclonev-socdk.h

@@ -55,8 +55,8 @@ int intToAscii(int number);
 
 void Bluetooth(uint32_t, uint8_t);
 
-//static int do_ddr(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])            // U-Boot 2013 (Intel EDS 2016)
-static int do_ddr(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])        // U-Boot 2020 (Intel EDS 2020)
+static int do_ddr(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])            // U-Boot 2013 (Intel EDS 2016)
+//static int do_ddr(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])        // U-Boot 2020 (Intel EDS 2020)
 {
     printf("\nStarting Custom U-BOOT Command:\n");
 
@@ -142,8 +142,8 @@ U_BOOT_CMD(ddr, CONFIG_SYS_MAXARGS, 1, do_ddr, "Custom ddr",
         "   - echo args to console; \\c suppresses newline"
         );
 
-//static int do_write(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])          // U-Boot 2013 (Intel EDS 2016)
-static int do_write(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])    // U-Boot 2020 (Intel EDS 2020)
+static int do_write(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])          // U-Boot 2013 (Intel EDS 2016)
+//static int do_write(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])    // U-Boot 2020 (Intel EDS 2020)
 {
     uint32_t addr = 0x30000000;
     for(int i = 0; i < 259200; i++) {
@@ -165,8 +165,8 @@ U_BOOT_CMD(write, CONFIG_SYS_MAXARGS, 1, do_write, "Custom write",
         "   - echo args to console; \\c suppresses newline"
         );
 
-static int do_bluetooth(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])    // U-Boot 2020 (Intel EDS 2020)
-//static int do_bluetooth(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])          // U-Boot 2013 (Intel EDS 2016)
+//static int do_bluetooth(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])    // U-Boot 2020 (Intel EDS 2020)
+static int do_bluetooth(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])          // U-Boot 2013 (Intel EDS 2016)
 {
     writel(0x00000030, FPGA_AXI_LW_BASE + BLUETOOTH_BASE);      // 0
     writel(0x0000002E, FPGA_AXI_LW_BASE + BLUETOOTH_BASE);      // .
