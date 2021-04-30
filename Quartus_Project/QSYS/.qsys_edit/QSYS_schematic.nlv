@@ -1,0 +1,92 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst QSYS.xy_Datab -pg 1 -lvl 13 -y 330
+preplace inst QSYS.hps_0.axi_ocram -pg 1
+preplace inst QSYS.hps_0.bridges -pg 1
+preplace inst QSYS.hps_0.hps_io -pg 1
+preplace inst QSYS.hps_0.gpio0 -pg 1
+preplace inst QSYS.hps_0.clkmgr -pg 1
+preplace inst QSYS.hps_0.gpio1 -pg 1
+preplace inst QSYS.hps_0.axi_sdram -pg 1
+preplace inst QSYS.hps_0.hps_io.border -pg 1
+preplace inst QSYS.hps_0.gpio2 -pg 1
+preplace inst QSYS.DDR_Read2_32_0 -pg 1 -lvl 11 -y 170
+preplace inst QSYS.hps_0.timer0 -pg 1
+preplace inst QSYS.hps_0.timer1 -pg 1
+preplace inst QSYS.Bluetooth -pg 1 -lvl 13 -y 430
+preplace inst QSYS.xx_Dataa -pg 1 -lvl 13 -y 30
+preplace inst QSYS.hps_0.timer2 -pg 1
+preplace inst QSYS.xx_Datab -pg 1 -lvl 13 -y 130
+preplace inst QSYS.hps_0.timer3 -pg 1
+preplace inst QSYS.In_Control -pg 1 -lvl 8 -y 590
+preplace inst QSYS.hps_0.i2c0 -pg 1
+preplace inst QSYS.hps_0.fpga_interfaces -pg 1
+preplace inst QSYS.hps_0.i2c1 -pg 1
+preplace inst QSYS.FPGA_Time -pg 1 -lvl 13 -y 750
+preplace inst QSYS.hps_0.i2c2 -pg 1
+preplace inst QSYS.hps_0.i2c3 -pg 1
+preplace inst QSYS.hps_0.l3regs -pg 1
+preplace inst QSYS.hps_0.arm_a9_0 -pg 1
+preplace inst QSYS.hps_0.arm_a9_1 -pg 1
+preplace inst QSYS.hps_0.fpgamgr -pg 1
+preplace inst QSYS.hps_0.gmac0 -pg 1
+preplace inst QSYS.hps_0.f2s_periph_ref_clk -pg 1
+preplace inst QSYS.hps_0.gmac1 -pg 1
+preplace inst QSYS.hps_0.wd_timer0 -pg 1
+preplace inst QSYS.hps_0.wd_timer1 -pg 1
+preplace inst QSYS.hps_0.rstmgr -pg 1
+preplace inst QSYS.hps_0.arm_gic_0 -pg 1
+preplace inst QSYS.sysid_qsys_1 -pg 1 -lvl 13 -y 850
+preplace inst QSYS.hps_0.nand0 -pg 1
+preplace inst QSYS.yy_Dataa -pg 1 -lvl 13 -y 550
+preplace inst QSYS.hps_0.dcan0 -pg 1
+preplace inst QSYS -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst QSYS.yy_Datab -pg 1 -lvl 13 -y 650
+preplace inst QSYS.hps_0.qspi -pg 1
+preplace inst QSYS.HPS_Time -pg 1 -lvl 13 -y 930
+preplace inst QSYS.hps_0.dcan1 -pg 1
+preplace inst QSYS.hps_0.f2s_sdram_ref_clk -pg 1
+preplace inst QSYS.hps_0 -pg 1 -lvl 12 -y 330
+preplace inst QSYS.hps_0.L2 -pg 1
+preplace inst QSYS.hps_0.dma -pg 1
+preplace inst QSYS.hps_0.sdmmc -pg 1
+preplace inst QSYS.DDR_Time -pg 1 -lvl 13 -y 1030
+preplace inst QSYS.hps_0.uart0 -pg 1
+preplace inst QSYS.hps_0.usb0 -pg 1
+preplace inst QSYS.hps_0.timer -pg 1
+preplace inst QSYS.hps_0.uart1 -pg 1
+preplace inst QSYS.hps_0.scu -pg 1
+preplace inst QSYS.hps_0.usb1 -pg 1
+preplace inst QSYS.hps_0.sdrctl -pg 1
+preplace inst QSYS.hps_0.sysmgr -pg 1
+preplace inst QSYS.hps_0.spim0 -pg 1
+preplace inst QSYS.hps_0.spim1 -pg 1
+preplace inst QSYS.Out_Control -pg 1 -lvl 8 -y 710
+preplace inst QSYS.hps_0.clk_0 -pg 1
+preplace inst QSYS.hps_0.eosc1 -pg 1
+preplace inst QSYS.pll_0 -pg 1 -lvl 10 -y 370
+preplace inst QSYS.hps_0.eosc2 -pg 1
+preplace inst QSYS.xy_Dataa -pg 1 -lvl 13 -y 230
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)yy_Dataa.external_connection,(SLAVE)QSYS.yy_dataa) 1 0 13 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 730 NJ 730 NJ 730 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)xy_Datab.external_connection,(SLAVE)QSYS.xy_datab) 1 0 13 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 290 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)Bluetooth.external_interface,(SLAVE)QSYS.bluetooth) 1 0 13 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 590 NJ 590 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)In_Control.external_connection,(SLAVE)QSYS.i_control) 1 0 8 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)xy_Dataa.external_connection,(SLAVE)QSYS.xy_dataa) 1 0 13 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 500 NJ 570 NJ 570 NJ 620 NJ 620 4240
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.memory,(SLAVE)hps_0.memory) 1 0 12 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 520 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)hps_0.hps_io,(SLAVE)QSYS.hps_io) 1 0 12 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 260 NJ 160 NJ
+preplace netloc FAN_OUT<net_container>QSYS</net_container>(SLAVE)Out_Control.s1,(SLAVE)DDR_Read2_32_0.Control_Avalon_MM_Slave,(SLAVE)FPGA_Time.s1,(SLAVE)Bluetooth.avalon_rs232_slave,(SLAVE)In_Control.s1,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)sysid_qsys_1.control_slave,(SLAVE)DDR_Time.s1,(SLAVE)HPS_Time.s1) 1 7 6 2240 530 NJ 530 NJ 530 3440 80 NJ 180 4220
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)xx_Dataa.external_connection,(SLAVE)QSYS.xx_dataa) 1 0 13 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 60 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.ddr_time,(SLAVE)DDR_Time.external_connection) 1 0 13 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.fpga_time,(SLAVE)FPGA_Time.external_connection) 1 0 13 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 780 NJ 780 NJ 780 NJ
+preplace netloc FAN_OUT<net_container>QSYS</net_container>(SLAVE)sysid_qsys_1.clk,(SLAVE)yy_Datab.clk,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)Out_Control.clk,(SLAVE)yy_Dataa.clk,(SLAVE)xy_Dataa.clk,(SLAVE)FPGA_Time.clk,(SLAVE)HPS_Time.clk,(SLAVE)DDR_Time.clk,(SLAVE)Bluetooth.clk,(SLAVE)hps_0.h2f_axi_clock,(MASTER)hps_0.h2f_user0_clock,(SLAVE)DDR_Read2_32_0.Control_Clk,(SLAVE)xx_Dataa.clk,(SLAVE)pll_0.refclk,(SLAVE)hps_0.h2f_lw_axi_clock,(SLAVE)xx_Datab.clk,(SLAVE)xy_Datab.clk,(SLAVE)In_Control.clk,(SLAVE)hps_0.f2h_sdram1_clock) 1 7 6 2260 550 NJ 550 2890 360 3380 100 3810 570 4280
+preplace netloc FAN_OUT<net_container>QSYS</net_container>(SLAVE)xy_Datab.s1,(MASTER)hps_0.h2f_axi_master,(SLAVE)yy_Datab.s1,(SLAVE)xx_Dataa.s1,(SLAVE)xy_Dataa.s1,(SLAVE)xx_Datab.s1,(SLAVE)yy_Dataa.s1) 1 12 1 4340
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.hps_time,(SLAVE)HPS_Time.external_connection) 1 0 13 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.yy_datab,(SLAVE)yy_Datab.external_connection) 1 0 13 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 680 NJ 680 NJ 680 NJ 680 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)Out_Control.external_connection,(SLAVE)QSYS.o_control) 1 0 8 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ
+preplace netloc POINT_TO_POINT<net_container>QSYS</net_container>(SLAVE)hps_0.f2h_sdram0_data,(MASTER)DDR_Read2_32_0.SDRAM_Avalon_MM_Master) 1 11 1 3770
+preplace netloc FAN_OUT<net_container>QSYS</net_container>(SLAVE)hps_0.f2h_sdram0_clock,(SLAVE)DDR_Read2_32_0.SDRAM_Clk,(MASTER)pll_0.outclk0) 1 10 2 3480 380 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.xx_datab,(SLAVE)xx_Datab.external_connection) 1 0 13 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 160 NJ
+preplace netloc EXPORT<net_container>QSYS</net_container>(SLAVE)QSYS.export,(SLAVE)DDR_Read2_32_0.conduit_end) 1 0 11 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ 280 NJ
+preplace netloc FAN_OUT<net_container>QSYS</net_container>(SLAVE)DDR_Read2_32_0.Control_Rst_n,(SLAVE)xy_Datab.reset,(SLAVE)Bluetooth.reset,(SLAVE)xx_Dataa.reset,(SLAVE)DDR_Time.reset,(MASTER)hps_0.h2f_reset,(SLAVE)Out_Control.reset,(SLAVE)xx_Datab.reset,(SLAVE)xy_Dataa.reset,(SLAVE)In_Control.reset,(SLAVE)sysid_qsys_1.reset,(SLAVE)HPS_Time.reset,(SLAVE)FPGA_Time.reset,(SLAVE)pll_0.reset,(SLAVE)yy_Dataa.reset,(SLAVE)yy_Datab.reset,(SLAVE)DDR_Read2_32_0.SDRAM_Rst) 1 7 6 2220 420 NJ 420 2910 340 3420 120 NJ 200 4300
+levelinfo -pg 1 0 70 4530
+levelinfo -hier QSYS 80 100 520 840 1320 1620 1860 2200 2390 2870 3250 3510 4030 4370 4520

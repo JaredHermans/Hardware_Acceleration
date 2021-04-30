@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="MULT_ADDER_IP_sim/MULT_ADDER_IP.vhd" type="VHDL" />
+ <topLevel name="MULT_ADDER_IP" />
+ <deviceFamily name="cyclonev" />
+</simPackage>
