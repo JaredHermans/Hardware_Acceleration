@@ -1,0 +1,6 @@
+echo --Disabling Cache--
+dcache off
+echo --Programming FPGA--
+fatload mmc 0:1 0x2000000 novpekcvlite.rbf
+fpga load 0 0x2000000 ${filesize}
+bridge enable

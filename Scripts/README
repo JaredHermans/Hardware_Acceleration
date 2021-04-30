@@ -1,0 +1,12 @@
+setup.sh: 		Script which uses Intel EDS to generate BSP files from Quartus output files. Script then clones Altera U-Boot source files
+			from github and cross compiler.
+
+source.sh: 		Script which copies socfpga.c to U-Boot files for custom U-Boot commands and cross compiles U-Boot.
+
+warning.sh: 		Script which copies U-Boot and preloader executables on A2 partition of SD card. Check lsblk before executing.
+
+gen_u-boot_script.sh:  	Generates u-boot.scr from u-boot.txt
+
+
+
+Protected Ram:		Add line #define CONFIG_PRAM=65536 in u-boot-socfpga/include/configs/socfpga-cyclonev-socdk.h
