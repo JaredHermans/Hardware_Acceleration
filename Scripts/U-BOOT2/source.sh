@@ -1,8 +1,8 @@
 #!/bin/bash
 # JARED HERMANS
 
-# copy to <quartus prj directory>/MY_CODE/U_BOOT
-cp ../socfpga.c ../../software2/spl_bsp/uboot-socfpga/common/cmd_ddr.c
+# Run Intel EDS 2016
+cp ../../C_Code/U-Boot/socfpga.c ../../software2/spl_bsp/uboot-socfpga/common/cmd_ddr.c
 cd ../../software2/spl_bsp
 make clean
 make

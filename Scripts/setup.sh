@@ -1,7 +1,7 @@
 #!/bin/bash
 # JARED HERMANS
 
-# copy to <quartus prj directory>/MY_CODE
+# Run Intel EDS 2020.1
 bsp-create-settings \
 	--type spl \
 	--bsp-dir ../Quartus_Project/software/spl_bsp \
